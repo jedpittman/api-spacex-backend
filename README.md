@@ -33,6 +33,10 @@ Don't hesitate to use any tools/tricks you know to load data quickly and easily!
 
 Write a query to fetch the the last known position of a satellite (by id), given a time T. Include this query in your README or somewhere in the project submission
 
+Connect to database, run the following style of query to get the record with the answer from the timeseries:
+SELECT * FROM getlocation('5eed7716096e5900069857f0', now());
+
+
 ## Bonus Task (Part 4):
 
 Write some logic (via a combination of query + application logic, most likely) to fetch from the database the _closest_ satellite at a given time T, and a given a position on a globe as a (latitude, longitude) coordinate.
@@ -52,3 +56,16 @@ For Ruby: https://github.com/kristianmandrup/haversine
 ### Questions
 
 If you have any questions at all during the challenge do not hesitate to reach out! Whether it be a question about the requirements, submitting, anything, just send us a note!
+
+### Running it. 
+
+I definitely ran out of time. I expect you should be able to run as follows:
+1. docker-compose up (to start the postgres db)
+2. python -m venv <path to new venv>
+3. activate and then to install/run, pip install -r requirements.txt
+4. python rewrite_json.py
+5. Connect to database using postgres/postgres on 5432 using your db tools of choice. 
+6. Run a query similar to the below to see what the data is for the given id of interest/timestamp: 
+   SELECT * FROM getlocation('5eed7716096e5900069857f0', now());
+
+I did not do what I could consider to be thorough validating/testing the data. This would be my very next step. I chose to omit the data that was questionable. This would have to be handled in a production setting, likely through some thoughtful work....
